@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Price Alerts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FF99CC; /* Rainbow background color */
+    }
+    #price-alert-form {
+      background-color: #FFFFFF; /* White background color */
+      color: #000000; /* Black text color */
+      width: 50%;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #FF69B4; /* Pink border color */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+      transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 0px); /* 3D transform effect */
+    }
+    label {
+      display: block;
+      color: #FF0000; /* Red text color */
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* 3D text shadow effect */
+      font-weight: bold; /* Bold text */
+    }
+    input[type="number"] {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #FFA07A; /* Orange border color */
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* 3D shadow effect */
+    }
+    button {
+      background-color: #FFFF00; /* Yellow background color */
+      color: #000000; /* Black text color */
+      margin: 10px 20px;
+      border: solid 2px #FFD700; /* Gold border color */
+      border-radius: 10px;
+      font-size: larger;
+      font-family: Arial, helvetica, Sans-Serif;
+      cursor: pointer;
+      transition: 0.5s;
+      transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 0px); /* 3D transform effect */
+      font-weight: bold; /* Bold text */
+    }
+    button:hover, button:active {
+      background-color: #FF8C00; /* Orange background color */
+      transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px, 0px); /* 3D transform effect */
+    }
+    #price-alert-notification {
+      font-size: larger;
+      color: #800080; /* Purple text color */
+      text-shadow: 0 0 5px rgba(128, 0, 128, 0.5); /* 3D text shadow effect */
+      font-weight: bold; /* Bold text */
+    }
+  </style>
+</head>
+<body>
+    <h1 style="color: #008000;">**Price Alerts**</h1>
+    <form id="price-alert-form">
+      <label for="price-threshold-input">**Enter Price Threshold:**</label>
+      <input type="number" id="price-threshold-input" />
+      <button id="set-alert-btn">**Set Alert**</button>
+      <div id="price-alert-notification"></div>
+    </form>
+    
+    </script>
+  </body>
+</head>
+
+<script>
+    const currentPrice = 100;
+    const priceAlertForm = document.getElementById('price-alert-form');
+    const priceThresholdInput = document.getElementById('price-threshold-input');
+    const priceAlertNotification = document.getElementById('price-alert-notification');
+    const setAlertBtn = document.getElementById('set-alert-btn');
+    setAlertBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const priceThreshold = parseFloat(priceThresholdInput.value);
+      if (priceThreshold > 0) {
+        if (currentPrice >= priceThreshold) {
+          priceAlertNotification.innerHTML = `**Price Alert!** ${currentPrice} has reached ${priceThreshold}!`;
+        } else {
+          priceAlertNotification.innerHTML = `**Price Alert Set!** ${priceThreshold} will be alerted when reached. Current price is ${currentPrice}.`;
+        }
+      } else {
+        priceAlertNotification.innerHTML = '**Invalid Price Threshold!** Please enter a valid price threshold.';
+      }
+    });
+    </script>
+  </body>
+  </html>
